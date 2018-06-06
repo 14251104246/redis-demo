@@ -11,8 +11,6 @@ spring:
     date-format: 'yyyy-MM-dd HH:mm:ss'
     # 排除结果中属性值是 null 的属性
     default-property-inclusion: non_null
-  datasource: 
-    driver-class-name: com.mysql.jdbc.Driver
   thymeleaf:
     mode: HTML5
     encoding: utf-8
