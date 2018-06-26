@@ -6,7 +6,9 @@
 #### 准备
 - 使用`docker-compose`命令启动redis服务器（可以用其他方式启动）
 - idea启动测试项目
-
+- jmeter测试脚本
+    - [高并发秒杀-重现超卖问题.jmx](src/test/jmeter/高并发秒杀-重现超卖问题.jmx)
+    - [高并发秒杀-有事务方式减少库存.jmx](src/test/jmeter/高并发秒杀-有事务方式减少库存.jmx)
 #### 重现秒杀时出现的超卖问题
 - 核心测试代码如下：
 ```java
