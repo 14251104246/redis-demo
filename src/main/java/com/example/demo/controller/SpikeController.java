@@ -79,7 +79,7 @@ public class SpikeController {
                 }
                 operations.opsForValue().set("product_sku", sku.toString());
                 List execResult = operations.exec();
-                operations.unwatch();
+//                operations.unwatch(); //执行exec()后自动unwatch()
                 if (execResult == null) {
                     return "事务执行失败";
                 }
