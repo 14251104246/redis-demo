@@ -69,9 +69,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>redis.clients</groupId>-->
-            <!--<artifactId>jedis</artifactId>-->
-            <!--<version>2.9.0</version>-->
+        <!--<groupId>redis.clients</groupId>-->
+        <!--<artifactId>jedis</artifactId>-->
+        <!--<version>2.9.0</version>-->
         <!--</dependency>-->
 
         <!--单元测试相关 start-->
@@ -99,6 +99,16 @@
             <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
