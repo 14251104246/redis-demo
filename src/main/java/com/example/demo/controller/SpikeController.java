@@ -66,28 +66,31 @@ public class SpikeController {
     @RequestMapping(value = "/reduceSku2", method = RequestMethod.GET)
     public String reduceSku2() {
         stringRedisTemplate.setEnableTransactionSupport(true);
-        Object result = stringRedisTemplate.execute(new SessionCallback() {
+        List<Object> results = stringRedisTemplate.execute(new SessionCallback<List<Object>>() {
             @Override
-            public Object execute(RedisOperations operations) throws DataAccessException {
+            public List<Object> execute(RedisOperations operations) throws DataAccessException {
                 operations.watch("product_sku");
                 String product_sku = (String) operations.opsForValue().get("product_sku");
                 operations.multi();
+                operations.opsForValue().get("product_sku");//必要的空查询
                 Integer sku = Integer.parseInt(product_sku);
                 sku = sku - 1;
                 if (sku < 0) {
-                    return "库存不足";
+                    return null;
                 }
                 operations.opsForValue().set("product_sku", sku.toString());
-                List execResult = operations.exec();
+                return operations.exec();
 //                operations.unwatch(); //执行exec()后自动unwatch()
-                if (execResult == null) {
-                    return "事务执行失败";
-                }
-                return "减少库存成功,共减少" + successNum.incrementAndGet();
+
             }
         });
 
-        return result.toString();
+        if (results != null && results.size() > 0) {
+            return "减少库存成功,共减少" + successNum.incrementAndGet();
+        }
+
+        return "库存不足";
+//        return result.toString();
     }
 
 

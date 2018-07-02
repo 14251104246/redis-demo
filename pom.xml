@@ -24,6 +24,7 @@
         <java.version>1.8</java.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockito-core.version>2.15.0</mockito-core.version>
+        <guava.version>19.0</guava.version>
     </properties>
 
     <dependencies>
@@ -101,7 +102,12 @@
         </dependency>
 
 
-
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.redisson</groupId>
